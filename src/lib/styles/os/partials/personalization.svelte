@@ -57,6 +57,18 @@
 				$selectedAccent
 			]}"
 		/>
+		<div class=" flex my-2 py-2 w-full">
+			<input
+				type="text"
+				class=" p-2 rounded-l-lg bg-slate-300 dark:bg-slate-700 text-slate-600 dark:text-slate-200 focus-visible:outline-none focus-visible:outline-0"
+				bind:value={tempWallpaper}
+			/>
+			<button
+				class=" p-2 rounded-r-lg text-slate-700 dark:text-slate-100 outline-none outline-0 "
+				style="background-color: {$accent[$selectedAccent]};"
+				on:click={searchImage}>Search</button
+			>
+		</div>
 		<label class=" text-slate-800 dark:text-slate-200 ml-2 font-semibold"
 			>Wallpaper Size
 			<select
@@ -103,18 +115,7 @@
 			<option value="round">Round</option>
 		</select>
 	</div>
-	<div class=" flex my-2 py-2 w-full">
-		<input
-			type="text"
-			class=" p-2 rounded-l-lg bg-slate-300 dark:bg-slate-700 text-slate-600 dark:text-slate-200 focus-visible:outline-none focus-visible:outline-0"
-			bind:value={tempWallpaper}
-		/>
-		<button
-			class=" p-2 rounded-r-lg text-slate-700 dark:text-slate-100 outline-none outline-0 "
-			style="background-color: {$accent[$selectedAccent]};"
-			on:click={searchImage}>Search</button
-		>
-	</div>
+
 	<div class=" mt-4">
 		<h2 class=" text-slate-800 dark:text-slate-200 mb-4 ml-2">Color Accent</h2>
 		{#each Object.entries($accent) as [name, color]}
