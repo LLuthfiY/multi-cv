@@ -24,4 +24,9 @@ const tempAccent: StringbyString = {
 const darkTheme = writable(false)
 const accent = writable(tempAccent)
 const selectedAccent = writable('red')
-export { darkTheme, accent, selectedAccent }
+const wallpaper = writable('/woodHouse.jpg')
+const wallpaperSize = writable('cover')
+const wallpaperX = writable('center')
+const wallpaperY = writable('center')
+const wallpaperRepeat = writable('no-repeat')
+export { darkTheme, accent, selectedAccent, wallpaper, wallpaperSize, wallpaperX, wallpaperY, wallpaperRepeat }

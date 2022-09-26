@@ -11,6 +11,13 @@
 
 	import { isHover, x, y, title } from '$lib/writable/tooltip';
 	import { zindex, show_project, show_settings, show_terminal } from '$lib/writable/windows';
+	import {
+		wallpaper,
+		wallpaperSize,
+		wallpaperX,
+		wallpaperY,
+		wallpaperRepeat
+	} from '$lib/writable/theme';
 	import { beforeUpdate } from 'svelte';
 
 	let terminal_zindex = 0;
@@ -37,7 +44,8 @@
 </script>
 
 <div
-	class=" relative min-h-screen w-screen bg-slate-100 dark:bg-slate-700 wallpaper overflow-hidden flex flex-col"
+	class=" relative min-h-screen w-screen bg-slate-100 dark:bg-slate-800 wallpaper overflow-hidden flex flex-col"
+	style="background-image: url({$wallpaper}); background-size:{$wallpaperSize}; background-position: {$wallpaperX} {$wallpaperY}; background-repeat: {$wallpaperRepeat}"
 >
 	<div class=" h-4 bg-slate-800" />
 	<div class=" flex-grow relative ">
@@ -90,7 +98,7 @@
 		<Window
 			name="Settings"
 			h={500}
-			w={500}
+			w={800}
 			bind:show={$show_settings}
 			bind:zindex={$zindex}
 			bind:window_zindex={settings_zindex}
