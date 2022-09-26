@@ -2,7 +2,10 @@
 module.exports = {
   content: ['./src/**/*.{html,js,svelte,ts}'],
   theme: {
-    extend: {},
+    extend: {
+      backgroundColor: ['active']
+    },
   },
   plugins: [],
+  darkMode: 'class'
 }
