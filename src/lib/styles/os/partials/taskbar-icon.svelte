@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { isHover, x, y, title } from '$lib/writable/tooltip';
+	import { task_stack } from '$lib/writable/windows';
 	export let icon = '';
 	export let name = '';
 	export let show = false;
 	export let zindex = 0;
 	export let window_zindex = 0;
-	export let task_stack: string[] = [];
 
 	function mouseOver(event: any) {
 		$isHover = true;
@@ -22,11 +22,11 @@
 	}
 
 	const toggleShow = () => {
-		if (!task_stack.some((w: any) => w === name)) task_stack.push(name);
-		if (task_stack[task_stack.length - 1] === name || !show) show = !show;
-		if (show && task_stack.length > 0)
-			task_stack.push(task_stack.splice(task_stack.indexOf(name), 1)[0]);
-		if (!show) task_stack.pop();
+		if (!$task_stack.some((w: any) => w === name)) $task_stack.push(name);
+		if ($task_stack[$task_stack.length - 1] === name || !show) show = !show;
+		if (show && $task_stack.length > 0)
+			$task_stack.push($task_stack.splice($task_stack.indexOf(name), 1)[0]);
+		if (!show) $task_stack.pop();
 		zindex += 1;
 		window_zindex = zindex;
 	};

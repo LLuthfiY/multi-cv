@@ -10,7 +10,13 @@
 	import Settings_app from '$lib/styles/os/apps/settings.svelte';
 
 	import { isHover, x, y, title } from '$lib/writable/tooltip';
-	import { zindex, show_project, show_settings, show_terminal } from '$lib/writable/windows';
+	import {
+		zindex,
+		show_project,
+		show_settings,
+		show_terminal,
+		task_stack
+	} from '$lib/writable/windows';
 	import {
 		wallpaper,
 		wallpaperSize,
@@ -26,10 +32,9 @@
 
 	let auto_hidden = false;
 
-	let task_stack: string[] = [];
 	beforeUpdate(() => {
-		if (task_stack.length === 0) auto_hidden = false;
-		if (task_stack.length > 0) auto_hidden = true;
+		if ($task_stack.length === 0) auto_hidden = false;
+		if ($task_stack.length > 0) auto_hidden = true;
 	});
 	if (browser) {
 		if (
@@ -49,11 +54,11 @@
 >
 	<div class=" h-4 bg-slate-800" />
 	<div class=" flex-grow relative ">
-		<div class=" absolute bottom-0 w-full h-12 group z-unli">
+		<div class=" absolute bottom-0 w-full h-8 group z-unli">
 			<div
 				class=" rounded-t-lg px-4 pb-4 bg-slate-400 dark:bg-slate-500 h-12 absolute {auto_hidden
 					? '-bottom-20'
-					: 'bottom-0'} group-hover:bottom-0 left-1/2 -translate-x-1/2 flex transition-all z-50"
+					: 'bottom-0'} group-hover:bottom-0 left-1/2 -translate-x-1/2 flex transition-all z-50 pointer-events-auto"
 			>
 				<TaskbarIcon
 					icon={terminal}
@@ -61,7 +66,6 @@
 					bind:show={$show_terminal}
 					bind:zindex={$zindex}
 					bind:window_zindex={terminal_zindex}
-					bind:task_stack
 				/>
 				<TaskbarIcon
 					icon={Explorer}
@@ -69,7 +73,6 @@
 					bind:show={$show_project}
 					bind:zindex={$zindex}
 					bind:window_zindex={project_zindex}
-					bind:task_stack
 				/>
 				<TaskbarIcon
 					icon={Settings}
@@ -77,7 +80,6 @@
 					bind:show={$show_settings}
 					bind:zindex={$zindex}
 					bind:window_zindex={settings_zindex}
-					bind:task_stack
 				/>
 			</div>
 		</div>
@@ -85,15 +87,13 @@
 			name="Terminal"
 			bind:show={$show_terminal}
 			bind:zindex={$zindex}
-			bind:window_zindex={terminal_zindex}
-			bind:task_stack><h1>terminal</h1></Window
+			bind:window_zindex={terminal_zindex}><h1>terminal</h1></Window
 		>
 		<Window
 			name="Project"
 			bind:show={$show_project}
 			bind:zindex={$zindex}
-			bind:window_zindex={project_zindex}
-			bind:task_stack><h1>project</h1></Window
+			bind:window_zindex={project_zindex}><h1>project</h1></Window
 		>
 		<Window
 			name="Settings"
@@ -101,8 +101,7 @@
 			w={800}
 			bind:show={$show_settings}
 			bind:zindex={$zindex}
-			bind:window_zindex={settings_zindex}
-			bind:task_stack><Settings_app /></Window
+			bind:window_zindex={settings_zindex}><Settings_app /></Window
 		>
 	</div>
 	{#if $isHover}

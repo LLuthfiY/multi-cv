@@ -4,8 +4,8 @@
 	import Close from '$lib/icons/close.svelte';
 
 	import { accent, selectedAccent } from '$lib/writable/theme';
-
-	export let task_stack: string[] = [];
+	import { task_stack } from '$lib/writable/windows';
+	import { beforeUpdate } from 'svelte';
 	export let show = true;
 	export let zindex = 0;
 	export let window_zindex = 0;
@@ -19,6 +19,8 @@
 
 	let moving = false;
 	let maximize = false;
+
+	let isActive = false;
 
 	function onMouseDown() {
 		moving = true;
@@ -41,15 +43,15 @@
 	}
 
 	const toggleShow = () => {
-		if (show && task_stack[task_stack.length] !== name) task_stack.pop();
+		if (show && $task_stack[$task_stack.length] !== name) $task_stack.pop();
 		show = !show;
 	};
 
 	const increase_zindex = (e: any) => {
 		zindex += 1;
 		window_zindex = zindex;
-		if (show && task_stack.length > 0)
-			task_stack.push(task_stack.splice(task_stack.indexOf(name), 1)[0]);
+		if (show && $task_stack.length > 0)
+			$task_stack.push($task_stack.splice($task_stack.indexOf(name), 1)[0]);
 	};
 
 	const maximize_toggle = () => {
@@ -177,17 +179,25 @@
 			}
 		};
 	}
+	beforeUpdate(() => {
+		if ($task_stack[$task_stack.length - 1] === name) isActive = true;
+		else isActive = false;
+	});
 </script>
 
 <div
-	class="  bg-slate-200 dark:bg-slate-800 absolute rounded-lg overflow-hidden flex flex-col border border-slate-600 z-10 animation"
+	class="  bg-slate-200 dark:bg-slate-800 absolute {maximize
+		? ''
+		: 'rounded-lg'} overflow-hidden flex flex-col border z-10 animation"
 	style="top: {maximize ? '0px' : y + 'px'}; left: {maximize
 		? '0px'
 		: x + 'px'}; z-index : {window_zindex}; display : {show
 		? 'flex'
 		: 'none'}; min-height: {min_h}px; min-width: {min_w}px; width: {maximize
 		? '100vw'
-		: w + 'px'}; height: {maximize ? '100vh' : h + 'px'}  "
+		: w + 'px'}; height: {maximize ? '100vh' : h + 'px'};border-color: {isActive
+		? $accent[$selectedAccent]
+		: $accent['gray']} "
 	use:resize
 	on:mousedown={increase_zindex}
 >
