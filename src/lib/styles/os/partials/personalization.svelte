@@ -69,59 +69,75 @@
 				on:click={searchImage}>Search</button
 			>
 		</div>
-		<label class=" text-slate-800 dark:text-slate-200 ml-2 font-semibold"
-			>Wallpaper Size
-			<select
-				name=""
-				id="sizeImage"
-				class=" p-2 text-slate-800 dark:text-slate-200 bg-slate-300 dark:bg-slate-700"
-				bind:value={$wallpaperSize}
-			>
-				<option value="auto">Auto</option>
-				<option value="cover" selected>Cover</option>
-				<option value="contain">Contain</option>
-			</select>
-		</label>
-		<br />
-		<label class=" text-slate-800 dark:text-slate-200 ml-2 font-semibold "
-			>Wallpaper Position
-
-			<select
-				name=""
-				class=" p-2 text-slate-800 dark:text-slate-200 bg-slate-300 dark:bg-slate-700 my-1 "
-				bind:value={$wallpaperX}
-			>
-				<option value="left">Left</option>
-				<option value="center" selected>Center</option>
-				<option value="right">Right</option>
-			</select>
-			<select
-				name=""
-				class=" p-2 text-slate-800 dark:text-slate-200 bg-slate-300 dark:bg-slate-700"
-				bind:value={$wallpaperY}
-			>
-				<option value="top">Top</option>
-				<option value="center" selected>Center</option>
-				<option value="bottom">Bottom</option>
-			</select>
-		</label>
-		<br />
-		<label class=" text-slate-800 dark:text-slate-200 ml-2 font-semibold"
-			>Wallpaper Repeat
-
-			<select
-				name=""
-				class=" p-2 text-slate-800 dark:text-slate-200 bg-slate-300 dark:bg-slate-700"
-				bind:value={$wallpaperRepeat}
-			>
-				<option value="no-repeat" selected>No Repeat</option>
-				<option value="repeat">Repeat</option>
-				<option value="repeat-x">Repeat X</option>
-				<option value="repeat-y">Repeat Y</option>
-				<option value="space">Space</option>
-				<option value="round">Round</option>
-			</select>
-		</label>
+		<table>
+			<tr>
+				<td>
+					<span class=" text-slate-800 dark:text-slate-200 mx-2 font-semibold">
+						Wallpaper Size
+					</span>
+				</td>
+				<td>
+					<select
+						name=""
+						id="sizeImage"
+						class=" p-2 text-slate-800 dark:text-slate-200 bg-slate-300 dark:bg-slate-700"
+						bind:value={$wallpaperSize}
+					>
+						<option value="auto">Auto</option>
+						<option value="cover" selected>Cover</option>
+						<option value="contain">Contain</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<span class=" text-slate-800 dark:text-slate-200 mx-2 font-semibold">
+						Wallpaper Position</span
+					>
+				</td>
+				<td
+					><select
+						name=""
+						class=" p-2 text-slate-800 dark:text-slate-200 bg-slate-300 dark:bg-slate-700 my-1 "
+						bind:value={$wallpaperX}
+					>
+						<option value="left">Left</option>
+						<option value="center" selected>Center</option>
+						<option value="right">Right</option>
+					</select>
+					<select
+						name=""
+						class=" p-2 text-slate-800 dark:text-slate-200 bg-slate-300 dark:bg-slate-700"
+						bind:value={$wallpaperY}
+					>
+						<option value="top">Top</option>
+						<option value="center" selected>Center</option>
+						<option value="bottom">Bottom</option>
+					</select></td
+				>
+			</tr>
+			<tr>
+				<td>
+					<span class=" text-slate-800 dark:text-slate-200 mx-2 font-semibold"
+						>Wallpaper Repeat</span
+					>
+				</td>
+				<td>
+					<select
+						name=""
+						class=" p-2 text-slate-800 dark:text-slate-200 bg-slate-300 dark:bg-slate-700"
+						bind:value={$wallpaperRepeat}
+					>
+						<option value="no-repeat" selected>No Repeat</option>
+						<option value="repeat">Repeat</option>
+						<option value="repeat-x">Repeat X</option>
+						<option value="repeat-y">Repeat Y</option>
+						<option value="space">Space</option>
+						<option value="round">Round</option>
+					</select>
+				</td>
+			</tr>
+		</table>
 	</div>
 
 	<div class=" mt-4">

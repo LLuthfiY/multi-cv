@@ -5,6 +5,9 @@
 
 	import Window from '$lib/styles/os/partials/window.svelte';
 	import TaskbarIcon from '$lib/styles/os/partials/taskbar-icon.svelte';
+	import Taskbar from '$lib/styles/os/partials/taskbar.svelte';
+
+	import Calendar from '$lib/styles/os/partials/calendar.svelte';
 
 	import { browser } from '$app/environment';
 	import Settings_app from '$lib/styles/os/apps/settings.svelte';
@@ -52,7 +55,7 @@
 	class=" relative min-h-screen w-screen bg-slate-100 dark:bg-slate-800 wallpaper overflow-hidden flex flex-col"
 	style="background-image: url({$wallpaper}); background-size:{$wallpaperSize}; background-position: {$wallpaperX} {$wallpaperY}; background-repeat: {$wallpaperRepeat}"
 >
-	<div class=" h-4 bg-slate-800" />
+	<Taskbar />
 	<div class=" flex-grow relative ">
 		<div class=" absolute bottom-0 w-full h-8 group z-unli">
 			<div
@@ -103,6 +106,7 @@
 			bind:zindex={$zindex}
 			bind:window_zindex={settings_zindex}><Settings_app /></Window
 		>
+		<Calendar />
 	</div>
 	{#if $isHover}
 		<div

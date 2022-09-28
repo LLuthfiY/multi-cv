@@ -188,14 +188,14 @@
 <div
 	class="  bg-slate-200 dark:bg-slate-800 absolute {maximize
 		? ''
-		: 'rounded-lg'} overflow-hidden flex flex-col border z-10 animation"
+		: 'rounded-lg'} overflow-hidden flex flex-col outline outline-1 z-10 animation"
 	style="top: {maximize ? '0px' : y + 'px'}; left: {maximize
 		? '0px'
 		: x + 'px'}; z-index : {window_zindex}; display : {show
 		? 'flex'
 		: 'none'}; min-height: {min_h}px; min-width: {min_w}px; width: {maximize
 		? '100vw'
-		: w + 'px'}; height: {maximize ? '100vh' : h + 'px'};border-color: {isActive
+		: w + 'px'}; height: {maximize ? '100vh' : h + 'px'};outline-color: {isActive
 		? $accent[$selectedAccent]
 		: $accent['gray']} "
 	use:resize
