@@ -5,6 +5,8 @@ const zindex = writable(0)
 const show_terminal = writable(false)
 const show_settings = writable(false)
 const show_project = writable(false)
+const show_vs_code = writable(true)
+const show_browser = writable(false)
 const task_stack = writable(task_stack_temp)
 
-export { zindex, show_project, show_settings, show_terminal, task_stack }
+export { zindex, show_project, show_settings, show_terminal, show_vs_code, show_browser, task_stack }

@@ -195,7 +195,7 @@
 		? 'flex'
 		: 'none'}; min-height: {min_h}px; min-width: {min_w}px; width: {maximize
 		? '100vw'
-		: w + 'px'}; height: {maximize ? '100vh' : h + 'px'};outline-color: {isActive
+		: w + 'px'}; height: {maximize ? '100%' : h + 'px'};outline-color: {isActive
 		? $accent[$selectedAccent]
 		: $accent['gray']} "
 	use:resize

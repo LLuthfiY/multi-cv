@@ -2,15 +2,19 @@
 	import terminal from '$lib/icons/terminal.svg';
 	import Explorer from '$lib/icons/explorer.svg';
 	import Settings from '$lib/icons/settings.svg';
+	import VSCode from '$lib/icons/vscode.svg';
+	import Globe from '$lib/icons/globe.svg';
 
 	import Window from '$lib/styles/os/partials/window.svelte';
 	import TaskbarIcon from '$lib/styles/os/partials/taskbar-icon.svelte';
 	import Taskbar from '$lib/styles/os/partials/taskbar.svelte';
+	import Iframe from '$lib/styles/os/partials/iframe.svelte';
 
 	import Calendar from '$lib/styles/os/partials/calendar.svelte';
 
 	import { browser } from '$app/environment';
 	import Settings_app from '$lib/styles/os/apps/settings.svelte';
+	import Browser from '$lib/styles/os/apps/browser.svelte';
 
 	import { isHover, x, y, title } from '$lib/writable/tooltip';
 	import {
@@ -18,6 +22,8 @@
 		show_project,
 		show_settings,
 		show_terminal,
+		show_vs_code,
+		show_browser,
 		task_stack
 	} from '$lib/writable/windows';
 	import {
@@ -28,10 +34,14 @@
 		wallpaperRepeat
 	} from '$lib/writable/theme';
 	import { beforeUpdate } from 'svelte';
+	import { onMount } from 'svelte';
+	let isWait = true;
 
 	let terminal_zindex = 0;
 	let project_zindex = 0;
 	let settings_zindex = 0;
+	let vs_code_zindex = 0;
+	let browser_zindex = 0;
 
 	let auto_hidden = false;
 
@@ -49,6 +59,13 @@
 			document.documentElement.classList.remove('dark');
 		}
 	}
+	onMount(() => {
+		setTimeout(() => {
+			isWait = false;
+			$show_vs_code = false;
+			$task_stack = [];
+		}, 1000);
+	});
 </script>
 
 <div
@@ -84,6 +101,20 @@
 					bind:zindex={$zindex}
 					bind:window_zindex={settings_zindex}
 				/>
+				<TaskbarIcon
+					icon={VSCode}
+					name="Visual Studio Code"
+					bind:show={$show_vs_code}
+					bind:zindex={$zindex}
+					bind:window_zindex={vs_code_zindex}
+				/>
+				<TaskbarIcon
+					icon={Globe}
+					name="Browser"
+					bind:show={$show_browser}
+					bind:zindex={$zindex}
+					bind:window_zindex={browser_zindex}
+				/>
 			</div>
 		</div>
 		<Window
@@ -106,6 +137,27 @@
 			bind:zindex={$zindex}
 			bind:window_zindex={settings_zindex}><Settings_app /></Window
 		>
+		<Window
+			name="Visual Studio Code"
+			h={500}
+			w={800}
+			bind:show={$show_vs_code}
+			bind:zindex={$zindex}
+			bind:window_zindex={vs_code_zindex}
+			><Iframe
+				title="Visual Studio Code"
+				link="https://github1s.com/LLuthfiY/Pixel_Art_With_Palette"
+			/></Window
+		>
+		<Window
+			name="Browser"
+			h={500}
+			w={800}
+			bind:show={$show_browser}
+			bind:zindex={$zindex}
+			bind:window_zindex={browser_zindex}
+			><Browser title="Browser" link="https://www.google.com/?igu=1" /></Window
+		>
 		<Calendar />
 	</div>
 	{#if $isHover}
@@ -116,6 +168,16 @@
 			{$title}
 		</div>
 	{/if}
+</div>
+
+<div
+	class=" absolute w-screen h-screen bg-slate-800 flex flex-col top-0 opacity-100 {isWait
+		? ''
+		: '-top-full'} transition-all"
+	style="z-index: 999999999999999999999999;"
+>
+	<h1 class=" text-slate-200 text-5xl mx-auto mt-auto font-mono ">LLuthfiY</h1>
+	<p class=" text-slate-200 mx-auto mb-auto">Loading</p>
 </div>
 
 <style>
