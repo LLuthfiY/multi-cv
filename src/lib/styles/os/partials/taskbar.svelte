@@ -3,7 +3,7 @@
 	import Sound from '$lib/icons/sound.svelte';
 	import Wifi from '$lib/icons/wifi.svelte';
 
-	import { calendar } from '$lib/writable/systemUI';
+	import { calendar, menu } from '$lib/writable/systemUI';
 	let Hours = new Date().getHours();
 	let Minutes = new Date().getMinutes();
 	setInterval(() => {
@@ -14,17 +14,20 @@
 	const calendarToggle = () => {
 		$calendar = !$calendar;
 	};
+	const menuToggle = () => {
+		$menu = !$menu;
+	};
 </script>
 
 <div class="px-4 flex h-fit bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200">
 	<div class=" ml-auto flex">
-		<div class=" text-inherit flex mx-1 cursor-pointer">
+		<div class=" text-inherit flex w-4 mx-1 cursor-pointer" on:click={menuToggle}>
 			<Wifi className="my-auto" />
 		</div>
-		<div class=" text-inherit flex mx-1 cursor-pointer">
+		<div class=" text-inherit flex w-4 mx-1 cursor-pointer" on:click={menuToggle}>
 			<Sound className="my-auto" />
 		</div>
-		<div class=" text-inherit flex mx-1 cursor-pointer">
+		<div class=" text-inherit flex w-4 mx-1 cursor-pointer" on:click={menuToggle}>
 			<Battery className="my-auto" />
 		</div>
 		<div

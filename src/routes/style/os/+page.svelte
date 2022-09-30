@@ -11,6 +11,7 @@
 	import Iframe from '$lib/styles/os/partials/iframe.svelte';
 
 	import Calendar from '$lib/styles/os/partials/calendar.svelte';
+	import Menu from '$lib/styles/os/partials/menu.svelte';
 
 	import { browser } from '$app/environment';
 	import Settings_app from '$lib/styles/os/apps/settings.svelte';
@@ -159,6 +160,7 @@
 			><Browser title="Browser" link="https://www.google.com/?igu=1" /></Window
 		>
 		<Calendar />
+		<Menu />
 	</div>
 	{#if $isHover}
 		<div
