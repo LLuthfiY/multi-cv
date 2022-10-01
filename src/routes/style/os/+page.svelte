@@ -16,6 +16,7 @@
 	import { browser } from '$app/environment';
 	import Settings_app from '$lib/styles/os/apps/settings.svelte';
 	import Browser from '$lib/styles/os/apps/browser.svelte';
+	import Terminal from '$lib/styles/os/apps/terminal.svelte';
 
 	import { isHover, x, y, title } from '$lib/writable/tooltip';
 	import {
@@ -122,7 +123,7 @@
 			name="Terminal"
 			bind:show={$show_terminal}
 			bind:zindex={$zindex}
-			bind:window_zindex={terminal_zindex}><h1>terminal</h1></Window
+			bind:window_zindex={terminal_zindex}><Terminal /></Window
 		>
 		<Window
 			name="Project"
