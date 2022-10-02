@@ -1,4 +1,5 @@
 import { writable } from "svelte/store";
 
 const globalCommand = writable('')
-export { globalCommand }
+const lines = writable([''])
+export { globalCommand, lines }

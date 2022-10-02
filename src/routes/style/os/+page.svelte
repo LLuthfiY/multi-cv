@@ -123,6 +123,8 @@
 			name="Terminal"
 			bind:show={$show_terminal}
 			bind:zindex={$zindex}
+			h={500}
+			w={800}
 			bind:window_zindex={terminal_zindex}><Terminal /></Window
 		>
 		<Window
