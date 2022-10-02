@@ -79,7 +79,22 @@
 				autofocus
 			/>
 			{#each loggings as log}
-				<div class="text-slate-700 dark:text-slate-200">{log}</div>
+				{#if typeof log === 'object'}
+					<div
+						class=" text-slate-700 dark:text-slate-200 flex align-middle"
+						style="--json-tree-font-size: 1rem;
+						--json-tree-string-color : {$accent['red']} ;
+						--json-tree-label-color:{$accent['pink']}; --json-tree-boolean-color: {$accent[
+							'blue'
+						]}; --json-tree-number-color: {$accent['blue']}; --json-tree-property-color: {$darkTheme
+							? $accent['white']
+							: $accent['black']} "
+					>
+						<JSONTree value={log} />
+					</div>
+				{:else}
+					<div class="text-slate-700 dark:text-slate-200">{log}</div>
+				{/if}
 			{/each}
 		</div>
 	</div>

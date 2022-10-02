@@ -19,6 +19,7 @@
 	import Terminal from '$lib/styles/os/apps/terminal.svelte';
 
 	import { isHover, x, y, title } from '$lib/writable/tooltip';
+	import { darkTheme } from '$lib/writable/theme';
 	import {
 		zindex,
 		show_project,
@@ -57,8 +58,10 @@
 			(!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
 		) {
 			document.documentElement.classList.add('dark');
+			$darkTheme = true;
 		} else {
 			document.documentElement.classList.remove('dark');
+			$darkTheme = false;
 		}
 	}
 	onMount(() => {
