@@ -44,9 +44,6 @@
 		[result, loggings] = call(msg);
 		// console.log(result.result === 1, loggings, 'ini');
 
-		if (result.result === 1 && loggings.length > 0) {
-			result.result = '';
-		}
 		if (result.error !== '') result.result = result.error;
 
 		result = result.result;

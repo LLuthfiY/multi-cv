@@ -75,10 +75,12 @@
 
 <div
 	class=" relative min-h-screen w-screen bg-slate-100 dark:bg-slate-800 wallpaper overflow-hidden flex flex-col"
-	style="background-image: url({$wallpaper}); background-size:{$wallpaperSize}; background-position: {$wallpaperX} {$wallpaperY}; background-repeat: {$wallpaperRepeat}"
 >
 	<Taskbar />
-	<div class=" flex-grow relative ">
+	<div
+		class=" flex-grow relative "
+		style="background-image: url({$wallpaper}); background-size:{$wallpaperSize}; background-position: {$wallpaperX} {$wallpaperY}; background-repeat: {$wallpaperRepeat}"
+	>
 		<div class=" absolute bottom-0 w-full h-8 group z-unli">
 			<div
 				class=" rounded-t-lg px-4 pb-4 bg-slate-400 dark:bg-slate-500 h-12 absolute {auto_hidden
