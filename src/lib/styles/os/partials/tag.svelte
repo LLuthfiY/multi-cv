@@ -3,6 +3,6 @@
 	export let name = 'chip';
 </script>
 
-<div class=" rounded-sm text-sm p-1 mx-1" style="background-color : {$accent[$selectedAccent]}">
+<div class=" rounded text-sm p-1 mx-1" style="background-color : {$accent[$selectedAccent]}">
 	<p>{name}</p>
 </div>

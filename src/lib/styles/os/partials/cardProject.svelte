@@ -14,7 +14,7 @@
 
 <a href={url}>
 	<div
-		class=" cardProject w-36 p-2 m-2 border rounded-lg text-slate-700 dark:text-slate-200"
+		class=" cardProject w-36 p-2 m-2 rounded-lg text-slate-700 dark:text-slate-200"
 		style="border-color: {$accent[$selectedAccent]}; background-color: {isHovered
 			? $accent[$selectedAccent]
 			: 'transparent'}"
