@@ -38,6 +38,7 @@
 	} from '$lib/writable/theme';
 	import { beforeUpdate } from 'svelte';
 	import { onMount } from 'svelte';
+	import Project from '$lib/styles/os/apps/project.svelte';
 	let isWait = true;
 
 	let terminal_zindex = 0;
@@ -136,7 +137,9 @@
 			name="Project"
 			bind:show={$show_project}
 			bind:zindex={$zindex}
-			bind:window_zindex={project_zindex}><h1>project</h1></Window
+			h={500}
+			w={800}
+			bind:window_zindex={project_zindex}><Project /></Window
 		>
 		<Window
 			name="Settings"
