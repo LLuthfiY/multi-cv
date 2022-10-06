@@ -19,7 +19,7 @@
 		</div>
 	</div>
 	<div class=" flex-grow flex justify-center items-center py-4  ">
-		<Card />
+		<Card url={'./style/os'} />
 	</div>
 </div>
 
